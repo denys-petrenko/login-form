@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/main.css">
+    <title>Login</title>
+</head>
+
+<body>
+    <div class="login-form">
+        <p class="title" id="title-log-in" data-show="true">Log in</p>
+        <p class="title" id="title-create" data-hide="true">Create account</p>
+        <form action="" method="post" class="form">
+            <div>
+                <input type="text" name="text" class="input-show" placeholder="Name" id="name" data-hide="true">
+            </div>
+            <div>
+                <input type="email" name="email" class="input" placeholder="Email">
+            </div>
+            <div>
+                <input type="password" name="password" class="input" placeholder="Password" id="password">
+            </div>
+            <div>
+                <input type="password" name="passwordConfirm" class="input-show" placeholder="Re-enter password"
+                id="passwordConfirm" data-hide="true">
+            </div>
+            <!-- <input type="text" name="text" class="input-show" placeholder="Name" id="name" data-hide="true"> -->
+            <!-- <input type="email" name="email" class="input" placeholder="Email"> -->
+            <!-- <input type="password" name="password" class="input" placeholder="Password" id="password"> -->
+            <!-- <input type="password" name="passwordConfirm" class="input-show" placeholder="Re-enter password"
+                id="passwordConfirm" data-hide="true"> -->
+            <div class="checkbox-container" data-show="true">
+                <label class="checkbox">
+                    <input type="checkbox" id="checkbox">
+                </label>
+                <label for="checkbox" class="checkbox-text">Remember me</label>
+            </div>
+            <div class="checkbox-container" id="check-privacy" data-hide="true">
+                <label class="checkbox">
+                    <input type="checkbox">
+                </label>
+                <p class="sign-up-label">
+                    I accept <span class="sign-up-link">Terms of Service</span> and <span class="sign-up-link">Privacy Policy</span>
+                </p>
+            </div>
+
+
+            <input type="submit" value="Submit" class="sigin-btn">
+        </form>
+        <p class="sign-up-label" id="create-acc" data-show="true">
+            Don't have an account?<span class="sign-up-link">Create account</span>
+        </p>
+        <p class="sign-up-label" id="log-in" data-hide="true">
+            Already have an account?<span class="sign-up-link">Log in</span>
+        </p>
+    </div>
+    <script src="./scripts/main.js"></script>
+</body>
+
+</html>
