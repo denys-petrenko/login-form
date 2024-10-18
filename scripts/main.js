@@ -1,12 +1,13 @@
+const form = document.forms[0];
 let createBtn = document.querySelector("#create-acc");
 let sigInBtn = document.querySelector(".sigin-btn");
 let logInBtn = document.querySelector("#log-in");
 let hide = document.querySelectorAll("[data-hide='true']");
 let show = document.querySelectorAll("[data-show='true']");
 
-sigInBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-})
+// sigInBtn.addEventListener("click", (e) => {
+//     e.preventDefault();
+// })
 
 createBtn.addEventListener("click", showCreateInputs);
 function showCreateInputs() {

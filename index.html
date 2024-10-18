@@ -13,24 +13,22 @@
         <p class="title" id="title-log-in" data-show="true">Log in</p>
         <p class="title" id="title-create" data-hide="true">Create account</p>
         <form action="" method="post" class="form">
-            <div>
-                <input type="text" name="text" class="input-show" placeholder="Name" id="name" data-hide="true">
+            <div class="input-show" data-hide="true" id="name">
+                <input type="text" name="text" class="input-show" placeholder="Name">
+                <span class="error" id="nameErrorLabel">Error</span>
             </div>
-            <div>
-                <input type="email" name="email" class="input" placeholder="Email">
+            <div class="input">
+                <input type="email" name="email" class="input" placeholder="Email" data-pattern="^[\w-\.]+@([\w-]+\.)$" required>
+                <span class="error" id="emailErrorLabel">Error</span>
             </div>
-            <div>
+            <div class="input" >
                 <input type="password" name="password" class="input" placeholder="Password" id="password">
+                <span class="error" id="passwordErrorLabel">Error</span>
             </div>
-            <div>
-                <input type="password" name="passwordConfirm" class="input-show" placeholder="Re-enter password"
-                id="passwordConfirm" data-hide="true">
+            <div class="input-show" data-hide="true" id="passwordConfirm">
+                <input type="password" name="passwordConfirm" class="input-show" placeholder="Re-enter password">
+                <span class="error" id="passwordConfirmErrorLabel">Error</span>
             </div>
-            <!-- <input type="text" name="text" class="input-show" placeholder="Name" id="name" data-hide="true"> -->
-            <!-- <input type="email" name="email" class="input" placeholder="Email"> -->
-            <!-- <input type="password" name="password" class="input" placeholder="Password" id="password"> -->
-            <!-- <input type="password" name="passwordConfirm" class="input-show" placeholder="Re-enter password"
-                id="passwordConfirm" data-hide="true"> -->
             <div class="checkbox-container" data-show="true">
                 <label class="checkbox">
                     <input type="checkbox" id="checkbox">
@@ -45,8 +43,6 @@
                     I accept <span class="sign-up-link">Terms of Service</span> and <span class="sign-up-link">Privacy Policy</span>
                 </p>
             </div>
-
-
             <input type="submit" value="Submit" class="sigin-btn">
         </form>
         <p class="sign-up-label" id="create-acc" data-show="true">

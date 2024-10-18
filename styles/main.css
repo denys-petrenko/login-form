@@ -42,7 +42,17 @@ body {
   border: 1px solid #c0c0c0;
   outline: 0 !important;
   box-sizing: border-box;
+}
+
+.input input, .input-show input {
+  width: 100%;
   padding: 12px 15px;
+  border: none;
+}
+
+.error {
+  display: none;
+  color: rgb(188, 27, 27);
 }
 
 .checkbox-container {
