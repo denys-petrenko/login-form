@@ -36,24 +36,25 @@ body {
   margin-bottom: 15px;
 }
 
-.input,
-.input-show {
+.input {
+  display: flex;
+  flex-direction: column;
+}
+.input input {
+  width: 100%;
+  padding: 12px 15px;
   border-radius: 20px;
   border: 1px solid #c0c0c0;
   outline: 0 !important;
   box-sizing: border-box;
 }
 
-.input input, .input-show input {
-  width: 100%;
-  padding: 12px 15px;
-  border: none;
-}
-
 .error {
   display: none;
   color: rgb(188, 27, 27);
+  margin-top: 5px;
 }
+
 
 .checkbox-container {
   display: flex;
@@ -92,8 +93,8 @@ body {
   cursor: pointer;
 }
 
-#passwordConfirm,
-#name,
+
+[data-hide="true"],
 #log-in,
 #title-create,
 #check-privacy {
@@ -134,8 +135,4 @@ body {
   color: teal;
   cursor: pointer;
   font-weight: 800;
-}
-
-.show {
-  display: flex;
 }

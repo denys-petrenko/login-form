@@ -13,21 +13,24 @@
         <p class="title" id="title-log-in" data-show="true">Log in</p>
         <p class="title" id="title-create" data-hide="true">Create account</p>
         <form action="" method="post" class="form">
-            <div class="input-show" data-hide="true" id="name">
-                <input type="text" name="text" class="input-show" placeholder="Name">
+            <div class="input" data-hide="true" id="name">
+                <input type="text" name="text" placeholder="Name" data-required="Please enter your name.">
                 <span class="error" id="nameErrorLabel">Error</span>
             </div>
             <div class="input">
-                <input type="email" name="email" class="input" placeholder="Email" data-pattern="^[\w-\.]+@([\w-]+\.)$" required>
-                <span class="error" id="emailErrorLabel">Error</span>
+                <input type="email" name="email" placeholder="Email" data-pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
+                data-required="Please enter email address.">
+                <span class="error" id="emailErrorLabel">Please enter valid email address.</span>
             </div>
-            <div class="input" >
-                <input type="password" name="password" class="input" placeholder="Password" id="password">
-                <span class="error" id="passwordErrorLabel">Error</span>
+            <div class="input">
+                <input type="password" name="password" placeholder="Password" id="password" data-required="Please enter password."
+                    data-pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{6,20}$">
+                <span class="error" id="passwordErrorLabel">The password must be between 6-20 characters and contain numbers,
+                    lowercase and uppercase latin characters and special characters.</span>
             </div>
-            <div class="input-show" data-hide="true" id="passwordConfirm">
-                <input type="password" name="passwordConfirm" class="input-show" placeholder="Re-enter password">
-                <span class="error" id="passwordConfirmErrorLabel">Error</span>
+            <div class="input" data-hide="true">
+                <input type="password" name="passwordConfirm" placeholder="Re-enter password" id="passwordConfirm" data-required="Please confirm password.">
+                <span class="error" id="passwordConfirmErrorLabel">Passwords do not match.</span>
             </div>
             <div class="checkbox-container" data-show="true">
                 <label class="checkbox">
@@ -40,8 +43,10 @@
                     <input type="checkbox">
                 </label>
                 <p class="sign-up-label">
-                    I accept <span class="sign-up-link">Terms of Service</span> and <span class="sign-up-link">Privacy Policy</span>
+                    I accept <span class="sign-up-link">Terms of Service</span> and <span class="sign-up-link">Privacy
+                        Policy</span>
                 </p>
+                <span class="error" id="privacyErrorLabel">To continue, please read and accept our Terms of Service and Privacy Policy</span>
             </div>
             <input type="submit" value="Submit" class="sigin-btn">
         </form>
