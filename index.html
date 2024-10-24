@@ -9,27 +9,30 @@
 </head>
 
 <body>
-    <div class="login-form">
+    <section class="login-form">
         <p class="title" id="title-log-in" data-show="true">Log in</p>
         <p class="title" id="title-create" data-hide="true">Create account</p>
         <form action="" method="post" class="form">
             <div class="input" data-hide="true">
                 <input type="text" name="text" placeholder="Name" data-required="Please enter your name.">
-                <span class="error" id="nameErrorLabel">Error</span>
+                <span class="error" id="nameErrorLabel">Please enter your name.</span>
             </div>
             <div class="input">
                 <input type="email" name="email" placeholder="Email" data-pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
-                data-required="Please enter email address.">
+                    data-required="Please enter email address.">
                 <span class="error" id="emailErrorLabel">Please enter valid email address.</span>
             </div>
             <div class="input">
-                <input type="password" name="password" placeholder="Password" id="password" data-required="Please enter password."
+                <input type="password" name="password" placeholder="Password" id="password"
+                    data-required="Please enter password."
                     data-pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{6,20}$">
-                <span class="error" id="passwordErrorLabel">The password must be between 6-20 characters and contain numbers,
+                <span class="error" id="passwordErrorLabel">The password must be between 6-20 characters and contain
+                    numbers,
                     lowercase and uppercase latin characters and special characters.</span>
             </div>
             <div class="input" data-hide="true">
-                <input type="password" name="passwordConfirm" placeholder="Re-enter password" id="passwordConfirm" data-required="Please confirm password.">
+                <input type="password" name="passwordConfirm" placeholder="Re-enter password" id="passwordConfirm"
+                    data-required="Please confirm password.">
                 <span class="error" id="passwordConfirmErrorLabel">Passwords do not match.</span>
             </div>
             <div class="checkbox-container" data-show="true">
@@ -39,14 +42,17 @@
                 <label for="checkbox" class="checkbox-text">Remember me</label>
             </div>
             <div class="checkbox-container" id="check-privacy" data-hide="true">
-                <label class="checkbox">
-                    <input type="checkbox">
-                </label>
-                <p class="sign-up-label">
-                    I accept <span class="sign-up-link">Terms of Service</span> and <span class="sign-up-link">Privacy
-                        Policy</span>
-                </p>
-                <span class="error" id="privacyErrorLabel">To continue, please read and accept our Terms of Service and Privacy Policy</span>
+                <div class="checkbox-input">
+                    <label class="checkbox">
+                        <input type="checkbox" name="privacy">
+                    </label>
+                    <p class="sign-up-label">
+                        I accept <span class="sign-up-link">Terms of Service</span> and <span
+                            class="sign-up-link">Privacy Policy</span>
+                    </p>
+                </div>
+                <span class="error" id="privacyErrorLabel">To continue, please read and accept our Terms of Service and
+                    Privacy Policy</span>
             </div>
             <input type="submit" value="Submit" class="sigin-btn">
         </form>
@@ -56,7 +62,8 @@
         <p class="sign-up-label" id="log-in" data-hide="true">
             Already have an account?<span class="sign-up-link">Log in</span>
         </p>
-    </div>
+    </section>
+
     <script src="./scripts/main.js"></script>
 </body>
 

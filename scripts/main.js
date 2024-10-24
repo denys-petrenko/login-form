@@ -6,69 +6,55 @@ let hide = document.querySelectorAll("[data-hide='true']");
 let show = document.querySelectorAll("[data-show='true']");
 
 sigInBtn.addEventListener("click", onSubmitHandler);
-
 createBtn.addEventListener("click", showCreateInputs);
+logInBtn.addEventListener("click", showLogIn);
+
 function showCreateInputs() {
     hide.forEach(item => item.style.display = "flex");
     show.forEach(item => item.style.display = "none");
     sigInBtn.value = "Create account";
 }
 
-logInBtn.addEventListener("click", showLogIn);
 function showLogIn() {
     hide.forEach(item => item.style.display = "none");
     show.forEach(item => item.style.display = "flex");
     sigInBtn.value = "Submit";
 }
 
-
 function onSubmitHandler(e) {
-    
-    
-   let inputs = form.querySelectorAll(".input")
-   inputs.forEach(input => {
-    let a = input.querySelector("input")
-    let display = getComputedStyle(input).display;
-    if (a.value.length == 0) {
-        a.classList.add("invalid");
-        console.log(a);
-    }
-    console.log(input);
-   })
-   let invalidElements = form.querySelectorAll(".invalid");
-    if (invalidElements.length > 0) {
-        console.log("stop");
+    let invalidElements = form.querySelectorAll(".invalid");
+    let inputs = form.querySelectorAll(".input");
+    inputs.forEach(element => {
+        let input = element.querySelector("input");
+        let errorMassage = element.querySelector(".error");
+        let display = getComputedStyle(element).display;
+        if (display == "flex" || input.value.length || 0 && !form.privacy.checked) {
+            input.classList.add("invalid");
+            errorMassage.style.display = "flex";
+            form.querySelector("#check-privacy").querySelector(".error").style.display = "flex";
+        }
+    });
+    if (invalidElements.length > 0 || !form.privacy.checked) {
         e.preventDefault();
     }
     else {
-        console.log("Форма отправлена");
+        alert("The form has been submitted");
         e.preventDefault();
     }
-    e.preventDefault();
 }
 
-form.email.addEventListener("change", patternMail);
-form.password.addEventListener("change", patternMail);
-form.passwordConfirm.addEventListener("change", password);
+form.text.addEventListener("change", requiredInputs);
+form.email.addEventListener("change", requiredInputs);
+form.password.addEventListener("change", requiredInputs);
+form.passwordConfirm.addEventListener("change", confirmPassword);
+form.privacy.addEventListener("change", checkPrivacy);
 
-function patternMail(e) {
+function requiredInputs(e) {
     let input = e.target;
     let errorMassage = input.parentElement.querySelector(".error");
     let regex = new RegExp(input.dataset.pattern);
     if (regex.test(input.value) && input.value.length > 0) {
-        input.classList.remove("invalid")
-        errorMassage.style.display = "none";
-    }
-    else {
-        input.classList.add("invalid")
-        errorMassage.style.display = "flex";
-    }
-}
-function password(e) {
-    let input = e.target;
-    let errorMassage = input.parentElement.querySelector(".error");
-    if (form.password.value == form.passwordConfirm.value) {
-        input.classList.remove("invalid")
+        input.classList.remove("invalid");
         errorMassage.style.display = "none";
     }
     else {
@@ -76,23 +62,18 @@ function password(e) {
         errorMassage.style.display = "flex";
     }
 }
-// function validateElement(e) {
-//     let input = e.target;
-//     let errorMassage = input.parentElement.querySelector(".error");
-//     let regex = new RegExp(input.dataset.pattern);
-//     // if ((regex.test(input.value) && input.value.length > 0)) {
-//     //     input.classList.remove("invalid")
-//     //     errorMassage.style.display = "none";
-//     // }
-//     if (form.password.value === form.passwordConfirm.value) {
-//         input.classList.remove("invalid")
-//         errorMassage.style.display = "none";
-//     }
-//     else {
-//         input.classList.add("invalid")
-//         errorMassage.style.display = "flex";
-//     }
-// }
+function confirmPassword(e) {
+    let input = e.target;
+    let errorMassage = input.parentElement.querySelector(".error");
+    if (form.password.value == form.passwordConfirm.value) {
+        input.classList.remove("invalid");
+        errorMassage.style.display = "none";
+    }
+    else {
+        input.classList.add("invalid");
+        errorMassage.style.display = "flex";
+    }
+}
 
 function inputRequired() {
     let inputs = form.querySelectorAll("input");
@@ -101,28 +82,24 @@ function inputRequired() {
         if (input.type !== 'checkbox') {
             input.addEventListener("blur", () => {
                 if (input.value.length == 0) {
-                    input.classList.add("invalid")
+                    input.classList.add("invalid");
                     input.placeholder = input.dataset.required;
                 }
             });
             input.addEventListener("focus", () => {
-                input.classList.remove("invalid")
+                input.classList.remove("invalid");
                 input.placeholder = defaultInput;
             })
         }
     })
 }
 
-inputRequired()
+inputRequired();
 
-
-
-
-
-
-
-
-
-
+function checkPrivacy() {
+    let privacy = form.querySelector("#check-privacy");
+    let errorMassage = privacy.querySelector(".error");
+    form.privacy.checked ? errorMassage.style.display = "none" : errorMassage.style.display = "flex";
+}
 
 

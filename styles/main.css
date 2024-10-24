@@ -40,6 +40,7 @@ body {
   display: flex;
   flex-direction: column;
 }
+
 .input input {
   width: 100%;
   padding: 12px 15px;
@@ -98,6 +99,7 @@ body {
 #title-create,
 #check-privacy {
   display: none;
+  flex-direction: column;
 }
 
 .sigin-btn {
@@ -138,4 +140,11 @@ body {
 
 .invalid {
   background: #ebbebe;
+}
+
+.checkbox-input {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
 }
