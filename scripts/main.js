@@ -2,10 +2,11 @@ const form = document.forms[0];
 let sigInBtn = document.querySelector(".sigin-btn");
 let createBtn = document.querySelector("#create-acc");
 let logInBtn = document.querySelector("#log-in");
+let titleCreate = document.querySelector("#title-create");
 let hide = document.querySelectorAll("[data-hide='true']");
 let show = document.querySelectorAll("[data-show='true']");
 
-sigInBtn.addEventListener("click", onSubmitHandler);
+form.addEventListener("submit", onSubmitHandler);
 createBtn.addEventListener("click", showCreateInputs);
 logInBtn.addEventListener("click", showLogIn);
 
@@ -22,19 +23,21 @@ function showLogIn() {
 }
 
 function onSubmitHandler(e) {
-    let invalidElements = form.querySelectorAll(".invalid");
     let inputs = form.querySelectorAll(".input");
     inputs.forEach(element => {
         let input = element.querySelector("input");
         let errorMassage = element.querySelector(".error");
         let display = getComputedStyle(element).display;
-        if (display == "flex" || input.value.length || 0 && !form.privacy.checked) {
+        if (display == "flex" && input.value == "") {
             input.classList.add("invalid");
             errorMassage.style.display = "flex";
-            form.querySelector("#check-privacy").querySelector(".error").style.display = "flex";
         }
     });
-    if (invalidElements.length > 0 || !form.privacy.checked) {
+    if (titleCreate.style.display == "flex" && !form.privacy.checked) {
+        checkPrivacy();
+    }
+    let invalidElements = form.querySelectorAll(".invalid");
+    if (invalidElements.length > 0 || (titleCreate.style.display == "flex" && !form.privacy.checked)) {
         e.preventDefault();
     }
     else {
@@ -62,6 +65,7 @@ function requiredInputs(e) {
         errorMassage.style.display = "flex";
     }
 }
+
 function confirmPassword(e) {
     let input = e.target;
     let errorMassage = input.parentElement.querySelector(".error");
@@ -101,5 +105,3 @@ function checkPrivacy() {
     let errorMassage = privacy.querySelector(".error");
     form.privacy.checked ? errorMassage.style.display = "none" : errorMassage.style.display = "flex";
 }
-
-
