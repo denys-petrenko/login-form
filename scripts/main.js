@@ -42,7 +42,6 @@ function onSubmitHandler(e) {
     }
     else {
         alert("The form has been submitted");
-        e.preventDefault();
     }
 }
 
