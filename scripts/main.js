@@ -42,6 +42,7 @@ function onSubmitHandler(e) {
     }
     else {
         alert("The form has been submitted");
+        e.preventDefault();
     }
 }
 
@@ -51,32 +52,30 @@ form.password.addEventListener("change", requiredInputs);
 form.passwordConfirm.addEventListener("change", confirmPassword);
 form.privacy.addEventListener("change", checkPrivacy);
 
+function showError(input, isValid) {
+    let errorMessage = input.parentElement.querySelector(".error");
+    if (isValid) {
+        input.classList.remove("invalid");
+        errorMessage.style.display = "none";
+    } else {
+        input.classList.add("invalid");
+        errorMessage.style.display = "flex";
+    }
+}
+
 function requiredInputs(e) {
     let input = e.target;
-    let errorMassage = input.parentElement.querySelector(".error");
     let regex = new RegExp(input.dataset.pattern);
-    if (regex.test(input.value) && input.value.length > 0) {
-        input.classList.remove("invalid");
-        errorMassage.style.display = "none";
-    }
-    else {
-        input.classList.add("invalid");
-        errorMassage.style.display = "flex";
-    }
+    let isValid = regex.test(input.value) && input.value.length > 0;
+    showError(input, isValid);
 }
 
 function confirmPassword(e) {
     let input = e.target;
-    let errorMassage = input.parentElement.querySelector(".error");
-    if (form.password.value == form.passwordConfirm.value) {
-        input.classList.remove("invalid");
-        errorMassage.style.display = "none";
-    }
-    else {
-        input.classList.add("invalid");
-        errorMassage.style.display = "flex";
-    }
+    let isValid = form.password.value === form.passwordConfirm.value;
+    showError(input, isValid);
 }
+
 
 function inputRequired() {
     let inputs = form.querySelectorAll("input");
